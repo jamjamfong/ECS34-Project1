@@ -233,6 +233,30 @@ TEST(StringUtilsTest, RJust){
 
 TEST(StringUtilsTest, Replace){
     
+    // Standard Test 
+    std::string inStringOne = "pizza pie moon";
+    std::string resultOne = StringUtils::Replace(inStringOne, "moon", "cheese");
+    EXPECT_EQ(resultOne, "pizza pie cheese");
+
+    // Replace with empty 
+    std::string inStringTwo = "pizza pie moon";
+    std::string resultTwo = StringUtils::Replace(inStringTwo, " ", "");
+    EXPECT_EQ(resultTwo, "pizzapiemoon");
+
+    // Replace an empty string 
+    std::string inStringThree = "";
+    std::string resultThree = StringUtils::Replace(inStringThree, "pizza", "pie");
+    EXPECT_EQ(resultThree, "");
+
+    // Replace repetition
+    std::string inStringFour = "pizza pizza pizza pie pie pie";
+    std::string resultFour = StringUtils::Replace(inStringFour, "pizza", "moon");
+    EXPECT_EQ(resultFour, "moon moon moon pie pie pie");
+
+    // Nothing to replace 
+    std::string inStringFive = "pizza pie moon";
+    std::string resultFive = StringUtils::Replace(inStringThree, "cheese", "pickle");
+    EXPECT_EQ(resultThree, "pizza pie moon");
 }
 
 
@@ -295,6 +319,25 @@ TEST(StringUtilsTest, Join){
 
 TEST(StringUtilsTest, ExpandTabs){
     
+    // Standard test
+    std::string inStringOne = "Hello\tmy\tname\tis\tJamie";
+    std::string resultOne = StringUtils::ExpandTabs(inStringOne);
+    EXPECT_EQ(resultOne, "Hello   my name    is   Jamie");
+
+    // Different tab size 
+    std::string inStringTwo = "Hello\tmy\tname\tis\tJamie";
+    std::string resultTwo = StringUtils::ExpandTabs(inStringTwo, 2);
+    EXPECT_EQ(resultTwo, "Hello my name is Jamie");
+
+   // Empty string
+    std::string inStringThree = "";
+    std::string resultThree = StringUtils::ExpandTabs(inStringThree);
+    EXPECT_EQ(resultThree, "");
+
+    // No tabs
+    std::string inStringFour = "Hello my name is Jamie";
+    std::string resultFour = StringUtils::ExpandTabs(inStringFour);
+    EXPECT_EQ(resultFour, "Hello my name is Jamie");
 }
 
 TEST(StringUtilsTest, EditDistance){
