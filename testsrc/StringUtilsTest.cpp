@@ -241,6 +241,31 @@ TEST(StringUtilsTest, Split){
 
 TEST(StringUtilsTest, Join){
     
+    // Standard test 
+    std::vector<std::string>setOne = {"pizza", "pie", "moon"};
+    std::string resultOne = StringUtils::Join(" ", setOne);
+    EXPECT_EQ(resultOne, "pizza pie moon");
+
+    // Empty vector 
+    std::vector<std::string>setTwo;
+    std::string resultTwo = StringUtils::Join(" ", setTwo);
+    EXPECT_EQ(resultTwo, "");
+
+    // One element 
+    std::vector<std::string>setThree = {"pizza"};
+    std::string resultThree = StringUtils::Join(".", setThree);
+    EXPECT_EQ(resultThree, "pizza"); 
+
+    // Empy seperator 
+    std::vector<std::string>setFour = {"pizza", "pie", "moon"};
+    std::string resultFour = StringUtils::Join("", setFour);
+    EXPECT_EQ(resultFour, "pizzapiemoon");
+
+    // Different/longer seperator
+    std::vector<std::string>setFive = {"pizza", "pie", "moon"};
+    std::string resultFive = StringUtils::Join("$$$", setFive);
+    EXPECT_EQ(resultFive, "pizza$$$pie$$$moon");
+
 }
 
 TEST(StringUtilsTest, ExpandTabs){
