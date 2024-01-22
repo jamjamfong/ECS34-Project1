@@ -221,6 +221,36 @@ TEST(StringUtilsTest, Strip){
 
 TEST(StringUtilsTest, Center){
     
+    // Standard test
+    std::string inStringOne = "Hello";
+    std::string resultOne = StringUtils::Center(inStringOne, 20);
+    EXPECT_EQ(resultOne, "       Hello       ");
+
+    // Empty string 
+    std::string inStringTwo = "";
+    std::string resultTwo = StringUtils::Center(inStringOne, 5);
+    EXPECT_EQ(resultOne, "     ");
+
+    // String with longer width
+    std::string inStringThree = "Hello my name is Jamie";
+    std::string resultThree = StringUtils::Center(inStringThree, 5);
+    EXPECT_EQ(resultThree, "Hello my name is Jamie"); 
+
+    // Equal to string length
+    std::string inStringFour = "Hello";
+    std::string resultFour = StringUtils::Center(inStringFour,5);
+    EXPECT_EQ(resultFour, "Hello");
+
+    // Negative width 
+    std::string inStringFive = "Hello";
+    std::string resultFive = StringUtils::Center(inStringFive, -4);
+    EXPECT_THROW(resultFive, std::invalid_argument);
+
+
+    // Fill characters 
+    std::string inStringSix = "Hello";
+    std::string resultSix = StringUtils::Center(inStringSix, 10, '!');
+    EXPECT_EQ(resultSix, "!!!!Hello!!!!");
 }
 
 TEST(StringUtilsTest, LJust){
