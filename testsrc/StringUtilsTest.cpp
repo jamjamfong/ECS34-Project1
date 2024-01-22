@@ -113,11 +113,42 @@ TEST(StringUtilsTest, Lower){
 }
 
 TEST(StringUtilsTest, LStrip){
+
+    // Standard test
+    std::string inStringOne = "   hello";
+    std::string resultOne = StringUtils::LStrip(inStringOne);
+    EXPECT_EQ(resultOne, "hello");
+
+    // No whitespaces 
+    std::string inStringTwo = "hello";
+    std::string resultTwo = StringUtils::LStrip(inStringTwo);
+    EXPECT_EQ(resultTwo, "hello");
+
+    // Empty string
+    std::string inStringThree = "";
+    std::string resultThree = StringUtils::LStrip(inStringThree);
+    EXPECT_EQ(resultThree, "");
+
+    // Only whitespaces
+    std::string inStringFour = "   ";
+    std::string resultFour = StringUtils::LStrip(inStringFour);
+    EXPECT_EQ(resultFour, "");
+
+    // Leading and trailing whitespace
+    std::string inStringFive = "   hello   ";
+    std::string resultFive = StringUtils::LStrip(inStringFive);
+    EXPECT_EQ(resultFive, "hello   ");
+
+    // Whitespace inbetween words
+    std::string inStringSix = " hello Bob   ";
+    std::string resultSix = StringUtils::LStrip(inStringSix);
+    EXPECT_EQ(resultSix, "hello Bob   ");
     
 }
 
 TEST(StringUtilsTest, RStrip){
-    
+
+  
 }
 
 TEST(StringUtilsTest, Strip){
