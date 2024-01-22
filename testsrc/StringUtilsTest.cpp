@@ -32,8 +32,36 @@ TEST(StringUtilsTest, SliceTest){
 };
 
 TEST(StringUtilsTest, Capitalize){
+     // Standard test
+    std::string inStringOne = "hello";
+    std::string resultOne = StringUtils::Capitalize(inStringOne);
+    EXPECT_EQ(resultOne, "Hello");
 
-   
+    // Input with a character other than a letter in front
+    std::string inStringTwo = "3hello";
+    std::string resultTwo = StringUtils::Capitalize(inStringTwo);
+    EXPECT_EQ(resultTwo, "3hello");
+
+    // Empty input
+    std::string inStringThree = "";
+    std::string resultThree = StringUtils::Capitalize(inStringThree);
+    EXPECT_EQ(resultThree, "");
+
+    // Already capitalized
+    std::string inStringFour = "Hello";
+    std::string resultFour = StringUtils::Capitalize(inStringFour);
+    EXPECT_EQ(resultFour, "Hello");
+
+    // Capitalized letters within the string
+    std::string inStringFive= "HeLLO";
+    std::string resultFive = StringUtils::Capitalize(inStringFive);
+    EXPECT_EQ(resultFive, "Hello");
+
+    // All letters capitalized
+    std::string inStringSix = "HELLO";
+    std::string resultSix = StringUtils::Capitalize(inStringSix);
+    EXPECT_EQ(resultSix, "Hello");
+
 }
 
 TEST(StringUtilsTest, Upper){
