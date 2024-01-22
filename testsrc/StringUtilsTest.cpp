@@ -62,10 +62,30 @@ TEST(StringUtilsTest, Capitalize){
     std::string resultSix = StringUtils::Capitalize(inStringSix);
     EXPECT_EQ(resultSix, "Hello");
 
-}
+};
 
 TEST(StringUtilsTest, Upper){
     
+    // Standard test
+    std::string inStringOne = "hello";
+    std::string resultOne = StringUtils::Upper(inStringOne);
+    EXPECT_EQ(resultOne, "HELLO");
+
+    // Some letters already capitalized
+    std::string inStringTwo = "HeLLo";
+    std::string resultTwo = StringUtils::Upper(inStringTwo);
+    EXPECT_EQ(resultTwo, "HELLO");
+
+    // Empty input
+    std::string inStringThree = "";
+    std::string resultThree = StringUtils::Upper(inStringThree);
+    EXPECT_EQ(resultThree, "");
+
+    // Other characters in string
+    std::string inStringFour = "He45llo!?!";
+    std::string resultFour = StringUtils::Upper(inStringFour);
+    EXPECT_EQ(resultFour, "HE45LLO!?!");
+
 }
 
 TEST(StringUtilsTest, Lower){
