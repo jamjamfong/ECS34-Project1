@@ -90,6 +90,25 @@ TEST(StringUtilsTest, Upper){
 
 TEST(StringUtilsTest, Lower){
 
+    // Standard test
+    std::string inStringOne = "Hello";
+    std::string resultOne = StringUtils::Lower(inStringOne);
+    EXPECT_EQ(resultOne, "hello");
+
+    // Some letters lowercase 
+    std::string inStringTwo = "HeLLo";
+    std::string resultTwo = StringUtils::Lower(inStringTwo);
+    EXPECT_EQ(resultTwo, "hello");
+
+    // Empty input
+    std::string inStringThree = "";
+    std::string resultThree = StringUtils::Lower(inStringThree);
+    EXPECT_EQ(resultThree, "");
+
+    // Other characters in string
+    std::string inStringFour = "He45LLo!?!";
+    std::string resultFour = StringUtils::Lower(inStringFour);
+    EXPECT_EQ(resultFour, "he45llo!?!");
 
 }
 
