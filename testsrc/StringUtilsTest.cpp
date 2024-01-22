@@ -217,7 +217,7 @@ TEST(StringUtilsTest, Strip){
     std::string resultSeven = StringUtils::Strip(inStringSeven);
     EXPECT_EQ(resultSeven, "");
 
-}
+};
 
 TEST(StringUtilsTest, Center){
     
@@ -235,9 +235,34 @@ TEST(StringUtilsTest, Replace){
     
 }
 
-TEST(StringUtilsTest, Split){
+
+TEST(StringUtilsTest, Split) {
     
+    // Standard test 
+    std::string inStringOne = "pizza.pie.moon";
+    std::vector<std::string> resultOne = StringUtils::Split(inStringOne, ".");
+    std::vector<std::string> expectedOne = {"pizza", "pie", "moon"};
+    EXPECT_EQ(resultOne, expectedOne);
+
+    // No split parameter 
+    std::string inStringTwo = "Hello my name is Jamie";
+    std::vector<std::string> resultTwo = StringUtils::Split(inStringTwo);
+    std::vector<std::string> expectedTwo = {"Hello", "my", "name", "is", "Jamie"};
+    EXPECT_EQ(resultTwo, expectedTwo);
+
+    // Empty string 
+    std::string inStringThree = "";
+    std::vector<std::string> resultThree = StringUtils::Split(inStringThree);
+    std::vector<std::string> expectedThree = {};
+    EXPECT_EQ(resultThree, expectedThree);
+
+    // Empty separator
+    std::string inStringFour = "pizza";
+    std::vector<std::string> resultFour = StringUtils::Split(inStringFour);
+    std::vector<std::string> expectedFour = {"pizza"};
+    EXPECT_EQ(resultFour, expectedFour);
 }
+
 
 TEST(StringUtilsTest, Join){
     
@@ -256,7 +281,7 @@ TEST(StringUtilsTest, Join){
     std::string resultThree = StringUtils::Join(".", setThree);
     EXPECT_EQ(resultThree, "pizza"); 
 
-    // Empy seperator 
+    // Empty seperator 
     std::vector<std::string>setFour = {"pizza", "pie", "moon"};
     std::string resultFour = StringUtils::Join("", setFour);
     EXPECT_EQ(resultFour, "pizzapiemoon");
@@ -275,3 +300,4 @@ TEST(StringUtilsTest, ExpandTabs){
 TEST(StringUtilsTest, EditDistance){
     
 }
+
