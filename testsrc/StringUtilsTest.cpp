@@ -182,6 +182,41 @@ TEST(StringUtilsTest, RStrip){
 
 TEST(StringUtilsTest, Strip){
     
+    // Standard test 
+    std::string inStringOne = " hello    ";
+    std::string resultOne = StringUtils::Strip(inStringOne);
+    EXPECT_EQ(resultOne, "hello");
+
+    // No whitespaces
+    std::string inStringTwo = "hello";
+    std::string resultTwo = StringUtils::Strip(inStringTwo);
+    EXPECT_EQ(resultTwo, "hello");
+
+    // Only whitespace
+    std::string inStringThree = "     ";
+    std::string resultThree = StringUtils::Strip(inStringThree);
+    EXPECT_EQ(resultThree, "");
+
+    // Left whitespace
+    std::string inStringFour = "     hello";
+    std::string resultFour = StringUtils::Strip(inStringFour);
+    EXPECT_EQ(resultFour, "hello");
+
+    // Right whitespace
+    std::string inStringFive = "hello     ";
+    std::string resultFive = StringUtils::Strip(inStringFive);
+    EXPECT_EQ(resultFive,"hello");
+
+    // Whitespace in between words
+    std::string inStringSix = "   hello Bob ";
+    std::string resultSix = StringUtils::Strip(inStringSix);
+    EXPECT_EQ(resultSix, "hello Bob");
+
+    // Empty string 
+    std::string inStringSeven = "";
+    std::string resultSeven = StringUtils::Strip(inStringSeven);
+    EXPECT_EQ(resultSeven, "");
+
 }
 
 TEST(StringUtilsTest, Center){
