@@ -283,7 +283,31 @@ TEST(StringUtilsTest, LJust){
 }
 
 TEST(StringUtilsTest, RJust){
-    
+
+    // Standard test
+    std::string inStringOne = "Hello";
+    std::string resultOne = StringUtils::RJust(inStringOne, 20);
+    EXPECT_EQ(resultOne, "               Hello");
+
+    // Empty string
+    std::string inStringTwo = "";
+    std::string resultTwo = StringUtils::RJust(inStringTwo, 8);
+    EXPECT_EQ(resultTwo, "");
+
+    // Fill character
+    std::string inStringThree = "Hello";
+    std::string resultThree = StringUtils::RJust(inStringThree,20);
+    EXPECT_EQ(resultThree, "!!!!!!!!!!!!!!!Hello");
+
+    // Negative width
+    std::string inStringFour = "Hello";
+    std::string resultFour = StringUtils::RJust(inStringFour, -4);
+    EXPECT_THROW(resultFour, std::invalid_argument);
+
+    // String longer than width 
+    std::string inStringFive = "Hello my name is Jamie";
+    std::string resultFive = StringUtils::RJust(inStringFive, 4);
+    EXPECT_EQ(resultFive, inStringFive);
 }
 
 TEST(StringUtilsTest, Replace){
