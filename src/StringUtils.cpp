@@ -81,7 +81,7 @@ std::string LStrip(const std::string &str) noexcept{
 
 std::string RStrip(const std::string &str) noexcept{
     
-    // Finds position of last nonwhitespace charaters 
+    // Finds position of last nonwhitespace characters 
     size_t lastNonWhitespace = str.find_last_not_of(" \t\n\r\f\v");
 
     //check if string is empty 
@@ -95,6 +95,20 @@ std::string RStrip(const std::string &str) noexcept{
 }
 
 std::string Strip(const std::string &str) noexcept{
+
+    // finds position of the first and last nonwhitespace characters
+    size_t firstNonWhitespace = str.find_first_not_of(" \t\n\r\f\v");
+    size_t lastNonWhitespace = str.find_last_not_of(" \t\n\r\f\v");
+
+      // checks if string is empty
+    if (firstNonWhitespace == std::string::npos || lastNonWhitespace == std::string::npos) {
+        return "";
+    }
+
+    // gets the substring between the nonwhitespace characters 
+    return str.substr(firstNonWhitespace, lastNonWhitespace - firstNonWhitespace + 1);
+
+}
 
 }
 std::string Center(const std::string &str, int width, char fill) noexcept{
