@@ -109,10 +109,21 @@ std::string Strip(const std::string &str) noexcept{
     return str.substr(firstNonWhitespace, lastNonWhitespace - firstNonWhitespace + 1);
 
 }
-
+    
 }
 std::string Center(const std::string &str, int width, char fill) noexcept{
+    
+    // finds amt of space needed on each side of the string 
+    int space = std::max(0, width - static_cast<int>(str.length()));
 
+    // find left space, if odd then it is less than the right space
+    int leftSpace = space / 2;
+
+    // find right space
+    int rightSpace = space - leftSpace;
+
+    // concatenate all the parts together
+    return std::string(leftSpace, fill) + str + std::string(rightSpace, fill);
 }
 
 std::string LJust(const std::string &str, int width, char fill) noexcept{
