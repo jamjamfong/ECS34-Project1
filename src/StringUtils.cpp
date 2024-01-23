@@ -3,21 +3,7 @@
 namespace StringUtils{
 
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept {
-    // Check for valid indices
-    if (start < 0) {
-        start = std::max(start + static_cast<ssize_t>(str.length()), static_cast<ssize_t>(0));
-    }
-    if (end <= 0) {
-        end = std::max(end + static_cast<ssize_t>(str.length()), static_cast<ssize_t>(0));
-    }
 
-    // Check for out-of-bounds indices
-    if (start >= static_cast<ssize_t>(str.length()) || start >= end) {
-        return "";
-    }
-
-    // Extract the substring using substr
-    return str.substr(start, end - start);
 }
 
 
@@ -40,7 +26,7 @@ std::string Capitalize(const std::string &str) noexcept{
 }
 
 std::string Upper(const std::string &str) noexcept{
-    
+
     // if the string is empty return an empty string 
 
     if (str.empty()){
@@ -56,47 +42,21 @@ std::string Upper(const std::string &str) noexcept{
     }
 
     return result;
+      
 }
 
 std::string Lower(const std::string &str) noexcept{
-    
-    if(str.empty()){
-        return "";
-    }
 
-    std::string result;
-
-    for(char c: str){
-        result+= std::tolower(c);
-    }
-
-    return result;
 }
+    
 
 std::string LStrip(const std::string &str) noexcept{
     
-    size_t firstNonWhitespace = str.find_first_not_of(" \t\n\r\f\v");
-
-    // Check if the string is empty or contains only whitespaces
-    if (firstNonWhitespace == std::string::npos) {
-        return "";
-    }
-
-    // Return the substring starting from the first non-whitespace character
-    return str.substr(firstNonWhitespace);
+ 
 }
 
 std::string RStrip(const std::string &str) noexcept{
     
-    // Find the position of the last non-whitespace character
-    size_t lastNonWhitespace = str.find_last_not_of(" \t\n\r\f\v");
-
-    // Check if the string is empty or contains only whitespaces
-    if (lastNonWhitespace == std::string::npos) {
-        return "";
-    }
-
-    return str.substr(0, lastNonWhitespace+1);
 }
 
 std::string Strip(const std::string &str) noexcept{
