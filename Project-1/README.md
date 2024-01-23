@@ -62,7 +62,7 @@
         - I was unsure how to create directories in a makefile
 
 
-TEST CITATIONS
+/*TEST CITATIONS*/
 
 1. Prompt: 
     "how would I make test cases in Google Tests for a function that capitalizes letters"
@@ -116,7 +116,57 @@ TEST CITATIONS
     - I didn't really understand how to make test cases and need an example to figure out how I would do the captalize one and the rest 
     - I copied the functions given and made sure to understand how to use them for the future (EXPECT_EQ)
 
-FUNCTION CITATIONS
+2. Prompt: 
+    "How do I create test cases with vectors"
+
+    Answer:
+            "Certainly! Here's a generic example of creating test cases with vectors using Google Test:
+
+    cpp
+    Copy code
+    #include <gtest/gtest.h>
+
+    // Function to be tested
+    std::vector<int> MultiplyByTwo(const std::vector<int>& input) {
+        std::vector<int> result;
+        for (int value : input) {
+            result.push_back(value * 2);
+        }
+        return result;
+    }
+
+    // Test case for MultiplyByTwo function
+    TEST(MyTestSuite, MultiplyByTwo) {
+        // Test case with a non-empty vector
+        std::vector<int> inputOne = {1, 2, 3};
+        std::vector<int> resultOne = MultiplyByTwo(inputOne);
+        std::vector<int> expectedOne = {2, 4, 6};
+        EXPECT_EQ(resultOne, expectedOne);
+
+        // Test case with an empty vector
+        std::vector<int> inputTwo = {};
+        std::vector<int> resultTwo = MultiplyByTwo(inputTwo);
+        std::vector<int> expectedTwo = {};
+        EXPECT_EQ(resultTwo, expectedTwo);
+
+        // Test case with negative values
+        std::vector<int> inputThree = {-1, -2, -3};
+        std::vector<int> resultThree = MultiplyByTwo(inputThree);
+        std::vector<int> expectedThree = {-2, -4, -6};
+        EXPECT_EQ(resultThree, expectedThree);
+    }
+
+    int main(int argc, char** argv) {
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
+    }
+    In this example, the function MultiplyByTwo takes a vector of integers and multiplies each element by two. The test cases use the EXPECT_EQ macro to compare the actual results with the expected vectors. Adjust the example based on the specific functions you want to test and the types involved."
+
+    Why:
+    - I didn't know if EXPECT_EQ() could handle vector values 
+
+
+/*FUNCTION CITATIONS*/
 
 1. https://stackoverflow.com/questions/8530529 convert-first-letter-in-string-to-uppercase
 
@@ -179,3 +229,50 @@ FUNCTION CITATIONS
      - my function couldn't handle when there wasn't a fill character inputted 
      - added a loop which accounted for if there was no fill 
      - changed the comparison to '\0' not "\0" which was giving me an error because fill is a character not a string 
+
+4. Prompt: 
+    "How do I find and replace the position of a string in C++ without adding other includes"
+
+    ChatGPT Answer:
+        "If you want to find and replace a substring within a string using only <string> and <vector> includes in C++, you can use the following approach. This involves iterating through the string and replacing occurrences of the target substring. Here's an example function:
+
+    cpp
+    Copy code
+    #include <iostream>
+    #include <string>
+    #include <vector>
+
+    std::string FindAndReplace(const std::string& input, const std::string& target, const std::string& replacement) {
+        std::string result = input;
+        std::vector<size_t> positions;
+
+        // Find all occurrences of the target substring
+        size_t pos = result.find(target);
+        while (pos != std::string::npos) {
+            positions.push_back(pos);
+            pos = result.find(target, pos + 1);
+        }
+
+        // Replace occurrences in reverse order to avoid changing positions of subsequent replacements
+        for (auto it = positions.rbegin(); it != positions.rend(); ++it) {
+            result.replace(*it, target.length(), replacement);
+        }
+
+        return result;
+    }
+
+    int main() {
+        std::string input = "Hello world! Hello universe!";
+        std::string target = "Hello";
+        std::string replacement = "Hi";
+
+        std::string output = FindAndReplace(input, target, replacement);
+
+        std::cout << "Original: " << input << std::endl;
+        std::cout << "Replaced: " << output << std::endl;
+
+        return 0;
+    }
+    This example defines a FindAndReplace function that uses a vector to store the positions of occurrences of the target substring. It then iterates through these positions and replaces the target substring with the replacement string in reverse order to avoid changing positions of subsequent replacements."
+
+    4. https://www.geeksforgeeks.org/stringnpos-in-c-with-examples/
