@@ -6,7 +6,7 @@
 
 namespace StringUtils{
     
-std::string Slice(const std::string &str, ssize_t start, ssize_t end=0) noexcept;
+std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept;
 std::string Capitalize(const std::string &str) noexcept;
 std::string Upper(const std::string &str) noexcept;
 std::string Lower(const std::string &str) noexcept;

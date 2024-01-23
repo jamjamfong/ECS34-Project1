@@ -244,7 +244,6 @@ TEST(StringUtilsTest, Center){
     // Negative width 
     std::string inStringFive = "Hello";
     std::string resultFive = StringUtils::Center(inStringFive, -4);
-   // EXPECT_THROW(resultFive, std::invalid_argument);
 
 
     // Fill characters 
@@ -274,7 +273,6 @@ TEST(StringUtilsTest, LJust){
     // Negative width 
     std::string inStringFour = "Hello";
     std::string resultFour = StringUtils::LJust(inStringFour, -4);
-   // EXPECT_THROW(resultFour, std::invalid_argument);
 
     // String longer than width 
     std::string inStringFive = "Hello my name is Jamie";
@@ -302,7 +300,6 @@ TEST(StringUtilsTest, RJust){
     // Negative width
     std::string inStringFour = "Hello";
     std::string resultFour = StringUtils::RJust(inStringFour, -4);
-   // EXPECT_THROW(resultFour, std::invalid_argument);
 
     // String longer than width 
     std::string inStringFive = "Hello my name is Jamie";
@@ -422,7 +419,6 @@ TEST(StringUtilsTest, ExpandTabs){
 TEST(StringUtilsTest, EditDistance){
     
     // Standard test
-    
 
     
 }

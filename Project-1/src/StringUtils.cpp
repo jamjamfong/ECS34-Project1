@@ -209,7 +209,6 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
 }
 
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
-    
 
     // stores result 
     std::string result;
@@ -233,7 +232,6 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     return result;
 }
 
-}
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
     // Replace code here
