@@ -42,11 +42,25 @@ std::string Upper(const std::string &str) noexcept{
     }
 
     return result;
-      
+
 }
 
 std::string Lower(const std::string &str) noexcept{
 
+    // if string is empty return an empty string 
+    if(str.empty()){
+        return "";
+    }
+
+    // creates result string
+    std::string result;
+
+    // converts every character in the string to lowercase
+    for(char c: str){
+        result+= std::tolower(c);
+    }
+
+    return result;
 }
     
 
