@@ -107,12 +107,10 @@ std::string Strip(const std::string &str) noexcept{
 
     // gets the substring between the nonwhitespace characters 
     return str.substr(firstNonWhitespace, lastNonWhitespace - firstNonWhitespace + 1);
+}
 
-}
-    
-}
 std::string Center(const std::string &str, int width, char fill) noexcept{
-    
+
     // finds amt of space needed on each side of the string 
     int space = std::max(0, width - static_cast<int>(str.length()));
 
@@ -144,6 +142,20 @@ std::vector< std::string > Split(const std::string &str, const std::string &splt
 }
 
 std::string Join(const std::string &str, const std::vector< std::string > &vect) noexcept{
+
+    // store result
+    std::string result;
+
+    //iterate through vector elements 
+    for (size_t i = 0; i < vect.size(); ++i) {
+        result += vect[i]; // add current element to the result
+
+        if (i < vect.size() - 1) {
+            result += str;  // add the separator after each element except the last one
+        }
+    }
+
+    return result;
 
 }
 
