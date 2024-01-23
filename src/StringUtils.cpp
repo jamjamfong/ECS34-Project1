@@ -133,6 +133,17 @@ std::string RJust(const std::string &str, int width, char fill) noexcept{
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
     
+    // store result 
+    std::string result = str;
+
+    size_t pos = 0;
+
+    // iterates through string and replaces the old with the new
+    while ((pos = result.find(old,pos)) != std::string::npos){
+        result.replace(pos,old.length(),rep);
+        pos += rep.length(); // moves the position pointed to keep searching 
+    }
+    return result;
  
 }
 
