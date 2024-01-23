@@ -149,6 +149,45 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
     
+    // vector stores the result strings 
+    std::vector<std::string>result;
+
+
+    if(splt.empty()){
+        // if split is empty, split on whitespace 
+        size_t start = 0;
+        size_t end = str.find_first_of(" \t\n\r\f\v");
+
+        // iterate through string and split on whitespace
+        while (start < str.length()) {
+            // no whitespace
+            if (end == std::string::npos) {
+                end = str.length();
+            }
+
+            
+            result.push_back(str.substr(start, end - start)); // add substring between start and end to result
+            start = str.find_first_not_of(" \t\n\r\f\v", end); // update start position to next nonwhitespace
+            end = str.find_first_of(" \t\n\r\f\v", start); //update end position to next white space
+        }
+    } else {
+
+        // if not empty split on input
+        size_t start = 0;
+        size_t end = str.find(splt);
+
+        // iterate through string and split 
+        while (end != std::string::npos) {
+            result.push_back(str.substr(start, end - start)); // add substring between start and end to result
+            start = end + splt.length(); // update start position to next position
+            end = str.find(splt, start); // update end psotion to next separator
+        }
+
+        // add remaining substring after last seperator 
+        result.push_back(str.substr(start));
+    }
+
+    return result;
 
 }
 
