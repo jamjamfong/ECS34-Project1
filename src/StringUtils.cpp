@@ -6,7 +6,6 @@ std::string Slice(const std::string &str, ssize_t start, ssize_t end = 0) noexce
     return "";
 }
 
-
 std::string Capitalize(const std::string &str) noexcept{
     
     // if the string is empty return an empty string
@@ -125,10 +124,10 @@ std::string Center(const std::string &str, int width, char fill) noexcept{
 }
 
 std::string LJust(const std::string &str, int width, char fill) noexcept{
-
+    return "";
 }
 std::string RJust(const std::string &str, int width, char fill) noexcept{
-
+    return "";
 }
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
@@ -210,6 +209,29 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
 }
 
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
+    
+
+    // stores result 
+    std::string result;
+    size_t column = 0; // tracks column position 
+
+
+    // iterate through character in input string
+    for (char c : str) {
+        if (c == '\t') {
+            // if tab replace with space
+            int spacesToAdd = tabsize - (column % tabsize);
+            result += std::string(spacesToAdd, ' '); // add to result 
+            column += spacesToAdd; // update column position 
+        } else {
+            result += c; // if not a tab add to result 
+            // increment column for non-tab characters
+            column++;
+        }
+    }
+
+    return result;
+}
 
 }
 
